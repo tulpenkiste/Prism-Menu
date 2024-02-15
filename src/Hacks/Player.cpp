@@ -46,13 +46,14 @@ class $modify(PlayerObject) {
         }
 
         if (Hacks::isHackEnabled("Instant Complete")) return;
-        if (Hacks::isHackEnabled("Enable Patching") || !Hacks::isHackEnabled("Freeze Player")) return PlayerObject::update(dt);
 
         // This is here because $modify doesn't want to work
         if (Hacks::isHackEnabled("Suicide") && PlayLayer::get() != nullptr) {
 	        auto playLayer = PlayLayer::get(); //shut!
-            playLayer->destroyPlayer(playLayer->m_player1, nullptr);
+            playLayer->PlayLayer::destroyPlayer(playLayer->m_player1, nullptr);
         }
+
+        if (Hacks::isHackEnabled("Enable Patching") || !Hacks::isHackEnabled("Freeze Player")) return PlayerObject::update(dt);
     }
     bool init(int p0, int p1, GJBaseGameLayer *p2, cocos2d::CCLayer *p3, bool p4) {
         if (!PlayerObject::init(p0,p1,p2,p3,p4)) return false;
